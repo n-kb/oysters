@@ -318,12 +318,12 @@ $black: black
   z-index: 3
 
 .promo
-  background: url(./assets/livre.jpg) center center
+  background: url(https://raw.githubusercontent.com/n-kb/oysters/master/src/assets/livre.jpg) center center
   background-size: cover
   height: 100vh
 
 .title-background
-  background: url(./assets/arcachon.jpg) center center
+  background: url(https://raw.githubusercontent.com/n-kb/oysters/master/src/assets/arcachon.jpg) center center
   background-size: cover
 
 .title-background-gradient
