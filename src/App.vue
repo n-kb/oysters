@@ -5,17 +5,19 @@
       </div>
       <div class="hero-body title-background">
         <div class="container">
-          <h1 class="title main-title">
+          <h1 class="title main-title blurred-out">
             {{ titres.title[lang] }}
           </h1>
-          <h2 class="subtitle main-title is-hidden-mobile">
+          <h2 class="subtitle main-title is-hidden-mobile blurred-out">
             {{ titres.subtitle[lang] }}
           </h2>
 
-          <div class="has-text-centered byline-container">
+          <div class="has-text-centered byline-container blurred-out">
             <span class="byline">
               {{ titres.byline[lang] }} <wbr/><a href="http://nkb.fr" target="_blank"><span class="author">Nicolas Kayser-Bril</span></a>
             </span>
+            <div class="scroll-down-text blurred-out">{{ titres.scroll[lang] }}</div>
+            <div class="scroll-down-arrow blurred-out"></div>
           </div>
         </div>
       </div>
@@ -92,6 +94,10 @@ export default {
   data () {
     return {
       titres: {
+        "scroll": {
+          "fr":"scrollez vers le bas",
+          "en":"scroll down"
+        },
         "title": {
           "fr":"Le silence des mollusques",
           "en":"The silence of the molluscs"
@@ -173,10 +179,10 @@ export default {
             }
           ],
           "legend": {
-            "en": "Nantes in the 18th century.",
-            "fr": "Les quais de Nantes au 18e siècle."
+            "en": "Bordeaux in the 18th century.",
+            "fr": "Bordeaux au 18e siècle."
           },
-          "image": "nantes_v.jpg"
+          "image": "bordeaux.jpg"
         },
         {
           "texts": [
@@ -211,8 +217,8 @@ export default {
             }
           ],
           "legend": {
-            "en": "Another oyster peddler.",
-            "fr": "Un autre vendeur d'huîtres à l'écaille."
+            "en": "A peddler of protected species.",
+            "fr": "Un receleur d'espèce protégée."
           },
           "image": "escale2.jpg"
         },
@@ -291,6 +297,20 @@ export default {
         
       ]
     }
+  },
+  mounted () {
+    this.$nextTick(this.pinContainerScene)
+  },
+  methods: {
+      pinContainerScene() {
+        let self = this
+        const scene = new this.$scrollmagic.Scene({
+          triggerElement: '.scroll-down-text',
+          triggerHook: 'onCenter'
+        })
+        .setClassToggle(".blurred-out", "blur-out")
+        this.$ksvuescr.$emit('addScene', 'pinContainerScene', scene)
+    }
   }
 }
 </script>
@@ -306,6 +326,18 @@ $black: black
 
 body
   background: black
+
+.blurred-out
+  transition-duration: 5s
+  transition-property: opacity, filter
+  opacity: 1
+  filter: blur(0px)
+
+.blur-out
+  transition-duration: 10s
+  transition-property: opacity, filter
+  opacity: 0
+  filter: blur(20px)
 
 .sources
   padding: 10vh 6vh
@@ -362,6 +394,19 @@ body
   bottom: -20vh
   z-index: 3
   color: white
+
+.scroll-down-text
+  font-size: .7em
+  margin-top: 1em
+
+.scroll-down-arrow
+  width: 10px
+  height: 10px
+  content: 'scroll down'
+  border-left: 1px solid white;
+  border-bottom: 1px solid white;
+  transform: rotate(-45deg);
+  margin: 0 auto
 
 .byline
   background: black
