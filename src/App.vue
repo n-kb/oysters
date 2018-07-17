@@ -86,7 +86,7 @@ export default {
   components: { scene },
   computed: {
     lang () {
-      return window.location.pathname.includes("en") ? "en" : "fr"
+      return window.location.search.includes("en") ? "en" : "fr"
     }
   },
   data () {
