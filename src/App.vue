@@ -66,7 +66,7 @@
             <li>Bible Pictures and What They Teach Us by Charles Foster, 1897</li>
             <li>Le Cuisinier François, La Varenne (1654).</li>
             <li>Gravure d'Abraham Bosse, 17e siècle.</li>
-            <li>Vue du port de Nantes prise de l'île Gloriette au XVIIIe, attribuée à Nicolas Ozanne (1728 – 1811).</li>
+            <li>Nouvelles vues perspectives des ports de France dessinées pour le Roi par M. Ozanne. Gravées par Y. Le Gouaz en 1776.</li>
             <li>Voyages aux Isles de l'Amérique (Antilles) : 1693-1705 . Tome 2</li>
             <li>Gravure de Pierre Brebiette, 17e siècle.</li>
             <li>Sa Majesté impériale Napoléon III, empereur des Français. 1857, photo de Gustave Le Gray.</li>
@@ -205,7 +205,7 @@ export default {
             },
             {
               "en": "Oyster consumption increased and oyster population fell. As soon as 1750, authorities passed new laws to restrict oyster gathering and avoid complete stock depletion.",
-              "fr": "La consommation augmente et la population d'huîtres diminue. Dès 1750, la récolte d'huîtres est reglementée pour limiter la baisse des stocks."
+              "fr": "A mesure que les humains les mangent, la population d'huîtres diminue. Dès 1750, les autorités règlementent la récolte d'huîtres pour limiter la baisse des stocks."
             },
             {
               "en": "But the police turned a blind eye. Fishermen needed money and clients wanted oysters.",
