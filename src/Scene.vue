@@ -21,7 +21,7 @@
          <div class="column">
            <div class="image-container">
              <div class="image-backgound"></div>
-             <img :src="'./src/images/' + sceneData.image" class="image">
+             <img :src="'./src/assets/' + sceneData.image" class="image">
              <div class="image-legend">
               {{ sceneData.legend[lang] }}
              </div>
