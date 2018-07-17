@@ -105,6 +105,8 @@
 
 .image-container
   position: relative
+  max-height: 90vh
+  overflow: hidden
 
 .image
   position: relative

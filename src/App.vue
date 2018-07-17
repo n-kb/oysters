@@ -6,22 +6,23 @@
       <div class="hero-body title-background">
         <div class="container">
           <h1 class="title main-title">
-            Le silence des mollusques
+            {{ titres.title[lang] }}
           </h1>
           <h2 class="subtitle main-title is-hidden-mobile">
-            Comment les huîtres disparurent des côtes françaises avant que la science ne les résuscite.
+            {{ titres.subtitle[lang] }}
           </h2>
 
           <div class="has-text-centered byline-container">
             <span class="byline">
-              Un thriller ostréicole de <wbr/><a href="http://nkb.fr" target="_blank"><span class="author">Nicolas Kayser-Bril</span></a>
+              {{ titres.byline[lang] }} <wbr/><a href="http://nkb.fr" target="_blank"><span class="author">Nicolas Kayser-Bril</span></a>
             </span>
           </div>
         </div>
       </div>
     </section>
     <scene v-for="(scene, index) in scenes" 
-           :sceneData="scene" lang="fr" 
+           :sceneData="scene" 
+           :lang="lang" 
            :sceneName="'scene' + index"
            :key="scene.image"></scene>
     <section class="hero is-fullheight is-black">
@@ -83,26 +84,45 @@ import scene from './Scene.vue'
 export default {
   name: 'app',
   components: { scene },
+  computed: {
+    lang () {
+      return window.location.pathname.includes("en") ? "en" : "fr"
+    }
+  },
   data () {
     return {
+      titres: {
+        "title": {
+          "fr":"Le silence des mollusques",
+          "en":"The silence of the molluscs"
+        },
+        "subtitle": {
+          "fr":"Comment les huîtres disparurent des côtes françaises avant que la science ne les résuscite.",
+          "en":"How oysters disappeared from France's coasts and how science resuscitated them."
+        },
+        "byline": {
+          "fr":"Un thriller ostréicole de",
+          "en":"An oyster thriller by"
+        }
+      },
       scenes: [
         {
           "texts": [
             {
-              "en": "",
-              "fr": "Des huîtres, on en mange depuis la nuit des temps, ou presque. La preuve: Dans l'ancien testament (il y a 5000 ans), Moïse prend la peine d'interdire la consommation de coquillages (Lévitique 11)."
+              "en": "Men and women have been eating oysters since forever. In the old Testament (3000 years ago), Moses goes so far as to forbid his followers from eating shells (Lev. 11).",
+              "fr": "Des huîtres, on en mange depuis la nuit des temps, ou presque. La preuve: Dans l'ancien testament (il y a 3000 ans), Moïse prend la peine d'interdire la consommation de coquillages (Lévitique 11)."
             },
             {
-              "en": "",
+              "en": "If the old man had written a cookbook, it would have looked like:",
               "fr": "Si le vieux barbu avait écrit un livre de cuisine, ça aurait donné:"
             },
             {
-              "en": "",
+              "en": '<table class="table is-fullwidth"><tr><td>I. No pig</td><td>VI. No rabbit</td></tr><tr><td>II. No ostrich</td><td>VII. No camel</td></tr><tr>  <td>III. No frogs</td>  <td>VIII. No sausage</td></tr><tr>  <td>IV. No mussels</td>  <td>IX. No snails</td></tr><tr>  <td>V. No octopus</td>  <td>X. And no oysters!</td></tr></table>',
               "fr": '<table class="table is-fullwidth"><tr><td>I. Pas de porc</td><td>VI. Pas de lièvre</td></tr><tr><td>II. Pas d\'autruche</td><td>VII. Pas de chameau</td></tr><tr>  <td>III. Pas de grenouilles</td>  <td>VIII. Pas de boudin</td></tr><tr>  <td>IV. Pas de moules</td>  <td>IX. Pas d\'escargots</td></tr><tr>  <td>V. Pas de poulpe</td>  <td>X. Et surtout pas d\'huîtres!</td></tr></table>'
             }
           ],
           "legend": {
-            "en": "",
+            "en": "Moses teaches the table of One.",
             "fr": "Moïse enseignant la table des 1."
           },
           "image": "moses.jpg"
@@ -110,16 +130,16 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "Luckily for culinary diversity, Christians did not follow these rules (Mat. 15:11 in particular) and continued to gobble down shells and molluscs.",
               "fr": "Heureusement pour la diversité culinaire, les chrétiens se sont affranchis de ces règles (Matthieu 15:11 en particulier) et ont continué à avaler des mollusques."
             },
             {
-              "en": "",
+              "en": "In the Middle Ages, oysters were mostly a food for the super rich. You'll find plenty of oyster recipes in medieval cookbooks (which were, at the time, only meant for the cooks of the higher-ups).",
               "fr": "Au Moyen-Âge, les huîtres étaient surtout un aliment de super riches. On en trouve de nombreuses recettes dans les livres de cuisine - à l'époque destinés uniquement aux cuisines des aristocrates."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "How about an 'Oyster Potage' from 1654?",
             "fr": "Petit potage d'huîtres frites en 1654."
           },
           "image": "lavarenne.jpg"
@@ -127,16 +147,16 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "Oysters were for the rich inland, but not on the coast.",
               "fr": "L'huître était réservée aux riches dans les terres, mais pas sur le littoral."
             },
             {
-              "en": "",
+              "en": "On the French Atlantic coast, it was normal for a worker to eat two dozens oysters for dinner.",
               "fr": "Sur la côte Altantique, un ouvrier pouvait se faire un repas de deux douzaines d'huîtres sans problème."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "An oyster peddler in the 17th century.",
             "fr": "Une vendeuse d'huîtres à l'écaille, c'est à dire à l'unité."
           },
           "image": "alescale.jpg"
@@ -144,16 +164,16 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "Between 1600 and 1700, the French Atlantic coast saw an economic boom.",
               "fr": "Entre 1600 et 1700, le littoral altantique est en plein essor."
             },
             {
-              "en": "",
+              "en": "The population doubled in Nantes and Bordeaux. In the meantime, Paris or Toulouse barely saw growth.",
               "fr": "La population double à Nantes et à Bordeaux, alors qu'elle stagne à Paris ou à Toulouse."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "Nantes in the 18th century.",
             "fr": "Les quais de Nantes au 18e siècle."
           },
           "image": "nantes_v.jpg"
@@ -161,12 +181,12 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "The economic boom happened because the rich in these towns enslaved millions to produce sugar, but that's another story.",
               "fr": "La raison de cet essor, c'est l'exploitation des Noirs aux Antilles, qui produisent le sucre que les Européens s'arrachent, mais c'est une autre histoire."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "A French entrepreneur making money in the 17th century.",
             "fr": "Un entrepreneur français en train de gagner de l'argent au 17e siècle."
           },
           "image": "sucrerie.jpg"
@@ -174,24 +194,24 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "Human population increased on the coast and so did its appetite for oysters.",
               "fr": "La population augmente sur le littoral, et son appetit d'huîtres avec."
             },
             {
-              "en": "",
+              "en": "Oyster consumption increased and oyster population fell. As soon as 1750, authorities passed new laws to restrict oyster gathering and avoid complete stock depletion.",
               "fr": "La consommation augmente et la population d'huîtres diminue. Dès 1750, la récolte d'huîtres est reglementée pour limiter la baisse des stocks."
             },
             {
-              "en": "",
+              "en": "But the police turned a blind eye. Fishermen needed money and clients wanted oysters.",
               "fr": "Mais la police ferme les yeux, les pêcheurs ont besoin d'argent et les clients réclament du mollusque."
             },
             {
-              "en": "",
+              "en": "In the mid 19<sup>th</sup> century, oysters were almost totally gone from the French Atlantic coast.",
               "fr": "Au milieu du 19<sup>e</sup> siècle, les huîtres ont quasiment disparu des côtes atlantiques."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "Another oyster peddler.",
             "fr": "Un autre vendeur d'huîtres à l'écaille."
           },
           "image": "escale2.jpg"
@@ -199,16 +219,16 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "Instead of enforcing the moratorium on oyster gathering, the French governement made a gamble and went all-in on aquaculture.",
               "fr": "Plutôt que de faire respecter le moratoire sur la pêche, le gouvernement tente un coup de poker et mise tout sur l'aquaculture."
             },
             {
-              "en": "",
+              "en": "Napoléon Bonaparte, after his 1851 coup, invested tons of public funds in research for oyster-farming.",
               "fr": "Napoléon Bonaparte, après son coup d'état de 1851, investi quantité d'argent public dans la recherche ostréicole."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "Bonaparte in 1857. He loved oysters more than republics.",
             "fr": "Bonaparte en 1857. Il aima les huîtres plus que la république."
           },
           "image": "n3.jpg"
@@ -216,33 +236,33 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "Oyster farming was a catastrophe.",
               "fr": "Au début, c'est une catastrophe."
             },
             {
-              "en": "",
+              "en": "Oysters were washed away by currents or stolen by local fishermen.",
               "fr": "Les huîtres des fermes ostréicole sont emportées par les courants ou pillées par les pêcheurs."
             }
           ],
           "legend": {
-            "en": "",
-            "fr": "Les débuts de l'aquaculture en Alsace."
+            "en": "The early days of aquaculture.",
+            "fr": "Les débuts de l'aquaculture."
           },
           "image": "huningue.jpg"
         },
         {
           "texts": [
             {
-              "en": "",
+              "en": "At the end of the 1860s, researchers finally managed to grow oysters (imported from England).",
               "fr": "Les chercheurs réussissent <em>in extremis</em> à élever des huîtres (importées d'Angleterre), à la fin des années 1860."
             },
             {
-              "en": "",
+              "en": "It was about time, because public funds for oyster-farming dried up in 1870 when Bonaparte was defeated and left power.",
               "fr": "<em>In extremis</em> car les fonds pour la recherche ostréicole se tarissent en 1870, lorsque Napoléon Bonaparte perd le pouvoir."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "An early prototype of an oyster farm.",
             "fr": "Ferme ostréicole (prototype)."
           },
           "image": "concarneau.jpg"
@@ -250,20 +270,20 @@ export default {
         {
           "texts": [
             {
-              "en": "",
+              "en": "Since the late 19<sup>th</sup> century, oyster-farming has been a running business, albeit an expensive one. A farmed oyster is much more expensive than an wild one.",
               "fr": "Depuis, l'ostréiculture est une affaire qui roule. Mais qui coûte cher. Une huître de culture n'a pas le même prix qu'une huître ramassée par un pêcheur."
             },
             {
-              "en": "",
-              "fr": "Si les parcs à huîtres sont rentables, c'est grâce au chemin de fer, qui a développé la consommation d'huîtres en ville."
+              "en": "Oyster farms are only profitable because the railroad opened new markets for molluscs and let city people eat fresh oysters.",
+              "fr": "Si les parcs à huîtres sont rentables, c'est uniquement grâce au chemin de fer, qui a permis la consommation d'huîtres fraîches en ville."
             },
             {
-              "en": "",
+              "en": "Oyster farms saved oysters, while at the same time turning it into a luxury food, even on the Atlantic coast.",
               "fr": "A partir de la fin du 19<sup>e</sup> siècle, l'huître n'est plus qu'un aliment pour riches, même sur le littoral."
             }
           ],
           "legend": {
-            "en": "",
+            "en": "A restaurant selling oysters in Paris (15th arrondissement) in 1925.",
             "fr": "Marchande d’huîtres en 1925 au 24 rue Frémicourt, dans le 15e arrondissement de Paris. Le resto “Au parc de la Tremblade” a depuis été détruit et remplacé par un gros immeuble moderne."
           },
           "image": "paris.jpg"
@@ -283,6 +303,9 @@ $table-color: #eee
 $black: black
 
 @import "~bulma/bulma"
+
+body
+  background: black
 
 .sources
   padding: 10vh 6vh
