@@ -62,7 +62,7 @@
         const scene = new this.$scrollmagic.Scene({
           triggerElement: '#' + this.sceneName + 'start',
           triggerHook: 'onLeave',
-          duration: self.sceneData.texts.length * 700
+          duration: self.sceneData.texts.length * 600
         })
         .setPin("#" + self.sceneName)
         this.$ksvuescr.$emit('addScene', 'pinContainerScene', scene)
@@ -73,7 +73,7 @@
           self.$ksvuescr.$emit('addScene', 'pinContainerScene', 
             new self.$scrollmagic.Scene({
               triggerElement: '#trigger' + self.sceneName + index,
-              duration: 500
+              duration: 550
             })
             .setClassToggle(target, "opacity-on")
             )
@@ -128,6 +128,8 @@
   font-size: 1.4rem
   position: absolute
   top: 10%
+  table
+    font-size: 1rem
 
 .opacity-on
   opacity: 1

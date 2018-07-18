@@ -115,7 +115,7 @@ export default {
         {
           "texts": [
             {
-              "en": "Men and women have been eating oysters since forever. In the old Testament (3000 years ago), Moses goes so far as to forbid his followers from eating shells (Lev. 11).",
+              "en": "Men and women have been eating oysters since forever. Best proof of that lies in the old Testament (3000 years ago), where Moses explicitely forbade his followers from eating shells (Lev. 11).",
               "fr": "Des huîtres, on en mange depuis la nuit des temps, ou presque. La preuve: Dans l'ancien testament (il y a 3000 ans), Moïse prend la peine d'interdire la consommation de coquillages (Lévitique 11)."
             },
             {
@@ -231,6 +231,10 @@ export default {
             {
               "en": "Napoléon Bonaparte, after his 1851 coup, invested tons of public funds in research for oyster-farming.",
               "fr": "Napoléon Bonaparte, après son coup d'état de 1851, investi quantité d'argent public dans la recherche ostréicole."
+            },
+            {
+              "en": "There was just an issue: oyster-farming and aquaculture did not exist at the time.",
+              "fr": "Seul problème: L'aquaculture et l'ostréiculture n'existe pas encore."
             }
           ],
           "legend": {
@@ -242,8 +246,8 @@ export default {
         {
           "texts": [
             {
-              "en": "Oyster farming was a catastrophe.",
-              "fr": "Au début, c'est une catastrophe."
+              "en": "At the beginning, oyster farming did not work at all.",
+              "fr": "Au début, l'ostréiculture ne fonctionne pas du tout."
             },
             {
               "en": "Oysters were washed away by currents or stolen by local fishermen.",
@@ -334,7 +338,7 @@ body
   filter: blur(0px)
 
 .blur-out
-  transition-duration: 10s
+  transition-duration: 5s
   transition-property: opacity, filter
   opacity: 0
   filter: blur(20px)
